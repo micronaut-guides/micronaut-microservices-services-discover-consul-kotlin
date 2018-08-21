@@ -1,0 +1,64 @@
+Create the `bookinventory` microservice:
+
+`mn create-app --lang kotlin example.micronaut.bookinventory.bookinventory`
+
+Modify `build.gradle` to add validation capabilities.
+
+[source,groovy]
+.bookinventory/build.gradle
+----
+include::{sourceDir}/bookinventory/build.gradle[tag=validation]
+----
+
+The previous command creates a folder named `bookinventory` and a Micronaut app inside it with
+default package: `example.micronaut.bookinventory`.
+
+Create a Controller:
+
+[source,kotlin]
+.bookinventory/src/main/kotlin/example/micronaut/bookinventory/BooksController.kt
+----
+include::{sourceDir}/bookinventory/src/main/kotlin/example/micronaut/bookinventory/BooksController.kt[]
+----
+
+<1> Define https://docs.micronaut.io/snapshot/api/io/micronaut/validation/Validated.html[Validated] annotation at the class level to signal any class that requires validation.
+<2> The class is defined as a controller with the http://docs.micronaut.io/snapshot/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
+<3> By default a Micronaut's response uses `application/json` as `Content-Type`. We are returning a String not a JSON object. Because of that, we set it to `text/plain`.
+<4> The `@Get` annotation is used to map the index method to `/books/stock/{isbn}` requests that use an HTTP GET.
+
+The previous controller uses a data class:
+
+[source,kotlin]
+.bookinventory/src/main/kotlin/example/micronaut/bookinventory/BookInventory.kt
+----
+include::{sourceDir}/bookinventory/src/main/kotlin/example/micronaut/bookinventory/BookInventory.kt[]
+----
+
+Write a test:
+
+[source,kotlin]
+.bookinventory/src/test/kotlin/example/micronaut/bookinventory/BooksControllerSpec.kt
+----
+include::{sourceDir}/bookinventory/src/test/kotlin/example/micronaut/bookinventory/BooksControllerSpec.kt[]
+----
+
+Edit `application.yml`
+
+[source,yaml]
+.bookinventory/src/main/resources/application.yml
+----
+include::{sourceDir}/bookinventory/src/main/resources/application.yml[tag=mn]
+----
+
+<1> Configure the application name. The app name will be used later in the tutorial.
+<2> Configure the app to listen at port 8082
+
+Create a file named `application-test.yml` which is used in the test environment:
+
+[source,yaml]
+.bookinventory/src/main/resources/application-test.yml
+----
+include::{sourceDir}/bookinventory/src/main/resources/application-test.yml[tag=port]
+----
+
+<1> Start the micronaut microservice at a random port when running the tests.
