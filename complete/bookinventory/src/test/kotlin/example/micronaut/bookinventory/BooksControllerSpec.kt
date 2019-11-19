@@ -2,7 +2,6 @@ package example.micronaut.bookinventory
 
 import io.micronaut.context.ApplicationContext
 import io.micronaut.http.HttpRequest
-import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.exceptions.HttpClientException
 import io.micronaut.runtime.server.EmbeddedServer
@@ -13,10 +12,10 @@ import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-object BookControllerSpec: Spek({
+object BookControllerSpec : Spek({
     describe("BookController Suite") {
-        var embeddedServer : EmbeddedServer = ApplicationContext.run(EmbeddedServer::class.java)
-        var client : HttpClient  = HttpClient.create(embeddedServer.url)
+        var embeddedServer: EmbeddedServer = ApplicationContext.run(EmbeddedServer::class.java)
+        var client: HttpClient = HttpClient.create(embeddedServer.url)
 
         it("a book in stock returns true") {
             val req = HttpRequest.GET<Any>("/books/stock/1491950358")
@@ -32,7 +31,7 @@ object BookControllerSpec: Spek({
         it("non existing Isbn returns 404") {
             val ex = assertFailsWith<HttpClientException> {
                 val req = HttpRequest.GET<Any>("/books/stock/XXXXX")
-                val hasStock = client.toBlocking().retrieve(req, Boolean::class.java)
+                client.toBlocking().retrieve(req, Boolean::class.java)
             }
             assertEquals(ex.message, "Page Not Found")
         }
