@@ -8,7 +8,6 @@ import io.reactivex.Maybe
 import javax.validation.constraints.NotBlank
 
 //end::packageandimports[]
-
 /*
 //tag::harcoded[]
 @Client("http://localhost:8082") // <1>

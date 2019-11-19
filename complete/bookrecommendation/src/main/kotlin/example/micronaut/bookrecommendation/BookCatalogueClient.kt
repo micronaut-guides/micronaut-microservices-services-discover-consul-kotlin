@@ -6,7 +6,6 @@ import io.micronaut.http.client.annotation.Client
 import io.reactivex.Flowable
 
 //end::packageandimports[]
-
 /*
 //tag::harcoded[]
 @Client("http://localhost:8081") // <1>
