@@ -5,14 +5,6 @@ Create the `bookinventory` microservice:
 The previous command creates a folder named `bookinventory` and a Micronaut app inside it with
 default package: `example.micronaut.bookinventory`.
 
-Micronaut already includes bean validation capabilities out of the box:
-
-[source,groovy]
-.bookinventory/build.gradle
-----
-include::{sourceDir}/bookinventory/build.gradle[tag=validator,indent=0]
-----
-
 Create a Controller:
 
 [source,kotlin]
@@ -36,9 +28,9 @@ include::{sourceDir}/bookinventory/src/main/kotlin/example/micronaut/bookinvento
 Write a test:
 
 [source,kotlin]
-.bookinventory/src/test/kotlin/example/micronaut/bookinventory/BooksControllerSpec.kt
+.bookinventory/src/test/kotlin/example/micronaut/bookinventory/BooksControllerTest.kt
 ----
-include::{sourceDir}/bookinventory/src/test/kotlin/example/micronaut/bookinventory/BooksControllerSpec.kt[]
+include::{sourceDir}/bookinventory/src/test/kotlin/example/micronaut/bookinventory/BooksControllerTest.kt[]
 ----
 
 Edit `application.yml`

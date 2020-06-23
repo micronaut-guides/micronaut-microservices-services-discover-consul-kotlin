@@ -27,9 +27,9 @@ include::{sourceDir}/bookcatalogue/src/main/kotlin/example/micronaut/bookcatalog
 Write a test:
 
 [source,kotlin]
-.bookcatalogue/src/test/kotlin/example/micronaut/bookcatalogue/BooksControllerSpec.kt
+.bookcatalogue/src/test/kotlin/example/micronaut/bookcatalogue/BooksControllerTest.kt
 ----
-include::{sourceDir}/bookcatalogue/src/test/kotlin/example/micronaut/bookcatalogue/BooksControllerSpec.kt[]
+include::{sourceDir}/bookcatalogue/src/test/kotlin/example/micronaut/bookcatalogue/BooksControllerTest.kt[]
 ----
 
 <1> It is easy to create HTTP requests with a fluid API.

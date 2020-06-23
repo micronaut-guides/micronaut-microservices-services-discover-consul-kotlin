@@ -4,7 +4,6 @@ gettingStarted:
   solution: Solution
 writingTheApp:
   title: Writing the App
-  spek2: Test with Spek 2
   bookcatalogue: Catalogue Microservice
   bookinventory: Inventory Microservice
   bookrecommendation: Recommendation Microservice
